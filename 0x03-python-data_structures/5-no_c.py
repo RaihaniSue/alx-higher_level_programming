@@ -2,6 +2,6 @@
 def no_c(my_string):
     new = ""
     for i in my_string:
-        if i != 103 and i != 143:
+        if i != 'c' and i != 'C':
             new += i
-        return new
+    return new
