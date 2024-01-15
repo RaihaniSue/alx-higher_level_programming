@@ -26,6 +26,17 @@ class Square(Rectangle):
         s = s.format(self.id, self.x, self.y, self.width)
         return s
 
+    def __update(self, id=None, size=None, x=None, y=None):
+        '''Internal method to update instance attributes via */**args.'''
+        if id is not None:
+            self.id = id
+        if size is not None:
+            self.size = size
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
+
     def update(self, *args, **kwargs):
         """ Weaving the Square's Destiny - Update Method """
         if args:
