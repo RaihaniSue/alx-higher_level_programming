@@ -64,19 +64,12 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """Loads objects from a JSON file."""
-        filename = cls.__name__ + ".json"
-
-        try:
-            with open(filename, encoding="utf-8") as myfile:
-                rd = myfile.read()
-                dicst = cls.from_json_string(rd)
-                inslist = []
-                for i in dicst:
-                    inslist.append(cls.create(**i))
-                return inslist
-        except IOError:
+        from os import path
+        file = "{}.json".format(cls.__name__)
+        if not path.isfile(file):
             return []
-
+        with open(file, "r", encoding="utf-8") as f:
+            return [cls.create(**d) for d in cls.from_json_string(f.read())]
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """Saves list of objects to a CSV file."""
