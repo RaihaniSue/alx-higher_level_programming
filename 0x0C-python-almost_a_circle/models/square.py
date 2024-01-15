@@ -28,25 +28,10 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         """ Weaving the Square's Destiny - Update Method """
-        if len(args):
-            for i, j in enumerate(args):
-                if i == 0:
-                    self.id = j
-                elif i == 1:
-                    self.size = j
-                elif i == 2:
-                    self.x = j
-                elif i == 3:
-                    self.y = j
-        else:
-            if "id" in kwargs:
-                self.id = kwargs["id"]
-            if "size" in kwargs:
-                self.size = kwargs["size"]
-            if "x" in kwargs:
-                self.x = kwargs["x"]
-            if "y" in kwargs:
-                self.y = kwargs["y"]
+        if args:
+            self.__update(*args)
+        elif kwargs:
+            self.__update(**kwargs)
 
     def to_dictionary(self):
         """ The Square's Chronicles - Dictionary Representation """
