@@ -49,13 +49,17 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Creates an object based on the provided dictionary."""
-        if cls.__name__ == "Rectangle":
-            dummy = cls(1, 1)
-        elif cls.__name__ == "Square":
-            dummy = cls(1)
-            dummy.update(**dictionary)
-            return dummy
+        '''Creates an object based on the provided dic.'''
+        from models.rectangle import Rectangle
+        from models.square import Square
+        if cls is Rectangle:
+            new = Rectangle(1, 1)
+        elif cls is Square:
+            new = Square(1)
+        else:
+            new = None
+        new.update(**dictionary)
+        return new
 
     @classmethod
     def load_from_file(cls):
