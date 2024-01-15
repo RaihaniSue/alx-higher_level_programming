@@ -74,11 +74,53 @@ class Rectangle(Base):
         else:
             self.__y = value
 
-    def validate_integer(self, name, value, eq=True):
-        '''Let's unveil the essence of validation'''
-        if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
-        if eq and value < 0:
-            raise ValueError("{} must be >= 0".format(name))
-        elif not eq and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
+    def area(self):
+        """Unveiling the Mathematical Realm - Calculating the Grand Area"""
+        return (self.__height * self.__width)
+
+    def display(self):
+        """Summoning the Rectangular Display - Unveiling the Majesty"""
+        myhash = "#"
+        if self.width == 0 or self.height == 0:
+            return
+        for i in range(self.y):
+            print()
+        for i in range(self.height):
+            print(' ' * self.x, end='')
+            print(myhash * self.width)
+
+    def update(self, *args, **kwargs):
+        """Bridging Realities - Updating the Rectangle with Args and Kwargs"""
+        if len(args):
+            for i, j in enumerate(args):
+                if i == 0:
+                    self.id = j
+                elif i == 1:
+                    self.width = j
+                elif i == 3:
+                    self.x = j
+                elif i == 4:
+                    self.y = j
+        else:
+            if "id" in kwargs:
+                self.id = kwargs["id"]
+            if "width" in kwargs:
+                self.width = kwargs["width"]
+            if "height" in kwargs:
+                self.height = kwargs["height"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
+
+    def __str__(self):
+        """Unveiling the Rectangular Essence - String Format Revelation"""
+        st = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
+        st = st.format(self.id, self.x, self.y, self.width, self.height)
+        return st
+
+    def to_dictionary(self):
+        """Summoning the Rectangular Dictionary - A Chronicle of Attributes"""
+        recdic = {"id": self.id, "width": self.width, "height": self.height,
+                  "x": self.x, "y": self.y}
+        return recdic
