@@ -5,6 +5,7 @@ from models.rectangle import Rectangle
 
 class Square(Rectangle):
     """ A Marvelous Square in the Realm of Shapes """
+
     def __init__(self, size, x=0, y=0, id=None):
         """ Unveiling the Square Constructor """
         super().__init__(size, size, x, y, id)
@@ -22,9 +23,8 @@ class Square(Rectangle):
 
     def __str(self):
         """ The Square's Tale - String Representation """
-        s = "[Square] ({:d}) {:d}/{:d} - {:d}"
-        s = s.format(self.id, self.x, self.y, self.width)
-        return s
+        return '[{}] ({}) {}/{} - {}'.\
+            format(type(self).__name__, self.id, self.x, self.y, self.width)
 
     def __update(self, id=None, size=None, x=None, y=None):
         '''Internal method to update instance attributes via */**args.'''
