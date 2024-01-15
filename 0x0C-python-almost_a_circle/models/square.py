@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ The Majestic Square Inherits the Essence of Geometry """
-
 from models.rectangle import Rectangle
+
 
 class Square(Rectangle):
     """ A Marvelous Square in the Realm of Shapes """
