@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 '''Unleash the Infinite - Module for the Mighty Base class.'''
+import json
+import csv
+import turtle
 
 
 class Base:
